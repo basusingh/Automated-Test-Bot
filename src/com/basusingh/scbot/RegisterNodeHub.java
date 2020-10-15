@@ -88,6 +88,7 @@ public class RegisterNodeHub {
 		options.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
 		options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 		options.addArguments("–start-maximized");
+		options.addArguments("--user-agent=" + "Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like MacOS X; en-us) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53");
 		options.addArguments("--disable-notifications");
 		//options.addArguments("disable-infobars");
 		
@@ -102,6 +103,9 @@ public class RegisterNodeHub {
 
 	}
 	
+	private String getRandomUserAgent() {
+		
+	}
 	
 	
 	public void sampleTest() {
