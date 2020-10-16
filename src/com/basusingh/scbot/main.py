@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog,ttk
 import requests
+from jnius import autoclass
 
 class Root(tk.Tk):
 
@@ -107,7 +108,12 @@ class page1(tk.Frame):
     def stopHub(hub_port):
     	r =requests.get('http://', hub_host, ':' + hub_port, '/lifecycle-manager?action=shutdown')
     	print('Status Code: ', r.status_code)
-        
+    
+    #Download https://github.com/kivy/pyjnius
+    def callJava1():
+    	Stream = autoclass('com.basusingh.scbot.StreamMain')
+    	stream = Stream()
+    	stream.setUp(hubHost, hubPort, nodeHost, nodePort)
         
 
 root = Root()
