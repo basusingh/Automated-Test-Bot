@@ -45,24 +45,30 @@ public class StreamMain {
 	private static final ServerSocket LOCK;
 	private static AtomicInteger currentMinPort = new AtomicInteger(MIN_PORT_NUMBER);
 
+	WebDriver driver;
 	
 	private String hub_role = "hub";
 	private String node_role = "node";
 	
+	//Began external input
 	//Input from user
 	private String hub_host;
 	private Integer hub_port;
 	private String node_host = "localhost";
 	private int[] node_port;
 	
-	WebDriver driver;
 	
+	String proxyLabel, proxyFormat, proxyType, accountLabel;
+	int threadDelay, playTimeMin, playTimeMax;
 	int threadCount;
 
+	
+	
+	
 	//Get the host for hub and node, port for hub and node
 	//Returns true if everything runs okay
 	//Returns false if there's an error
-	public boolean setUp(String hubHost, int hubPort, String nodeHost, int[] nodePort, int tCount) {
+	public boolean setUpHubPort(String hubHost, int hubPort, String nodeHost, int[] nodePort, int tCount) {
 		hub_host = hubHost;
 		node_host = nodeHost;
 		
@@ -84,8 +90,16 @@ public class StreamMain {
 			node_port = nodePort;
 			threadCount = tCount;
 			
+			//Start Hub
 			ConfigHub();
 			StartHub();
+			
+			//Start Node
+			for(int i = 0; i < node_port.length; i++) {
+				System.out.println("Starting node: " + (i+1));
+				ConfigNode(node_port[i]);
+			}
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 			return false;
@@ -94,14 +108,18 @@ public class StreamMain {
 		return true;
 	}
 	
+	public void setUpStream(String mProxyLabel, String mProxyFormat, String mProxyType, String mAccountLabel, int mThreadDelay, int mPlayTimeMin, int mPlayTimeMax) {
+		proxyLabel = mProxyLabel;
+		proxyFormat = mProxyFormat;
+		proxyType = mProxyType;
+		accountLabel = mAccountLabel;
+		threadDelay = mThreadDelay;
+		playTimeMin = mPlayTimeMin;
+		playTimeMax = mPlayTimeMax;
+	}
+	
 	public void startBot() {
 		
-		for(int i = 0; i < node_port.length; i++) {
-			System.out.println("Starting node: " + (i+1));
-			ConfigNode(node_port[i]);
-		}
-		
-
 		for(int i = 0; i < threadCount; i++) {
 			final int j = i;
 			Thread t = new Thread() {

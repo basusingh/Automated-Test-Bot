@@ -113,7 +113,7 @@ class page1(tk.Frame):
     def callJava1():
     	Stream = autoclass('com.basusingh.scbot.StreamMain')
     	stream = Stream()
-    	stream.setUp(hubHost, hubPort, nodeHost, nodePort)
+    	stream.setUpHubPort(hubHost, hubPort, nodeHost, nodePort, self.threads.get())
         
 
 root = Root()
