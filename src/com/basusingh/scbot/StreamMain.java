@@ -42,7 +42,6 @@ public class StreamMain {
 	
 	public static final int MIN_PORT_NUMBER = 1100;
 	public static final int MAX_PORT_NUMBER = 49151;
-	private static final ServerSocket LOCK;
 	private static AtomicInteger currentMinPort = new AtomicInteger(MIN_PORT_NUMBER);
 
 	WebDriver driver;
@@ -119,7 +118,6 @@ public class StreamMain {
 	}
 	
 	public void startBot() {
-		
 		for(int i = 0; i < threadCount; i++) {
 			final int j = i;
 			Thread t = new Thread() {
@@ -135,7 +133,6 @@ public class StreamMain {
 			};
 			t.start();
 		}
-		
 	}
 	
 
@@ -146,7 +143,7 @@ public class StreamMain {
 		options.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
 		options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 		options.addArguments("–start-maximized");
-		options.addArguments("--user-agent=" + "Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like MacOS X; en-us) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53");
+		options.addArguments("--user-agent=" + getRandomUserAgent());
 		options.addArguments("--disable-notifications");
 		//options.addArguments("disable-infobars");
 		

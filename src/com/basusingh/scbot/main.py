@@ -110,10 +110,17 @@ class page1(tk.Frame):
     	print('Status Code: ', r.status_code)
     
     #Download https://github.com/kivy/pyjnius
-    def callJava1():
+    def callJava():
+    	#fetch class
     	Stream = autoclass('com.basusingh.scbot.StreamMain')
+    	#create class instance
     	stream = Stream()
+    	#set up hub and port (S, I, S, I, I) S=String, I=int
     	stream.setUpHubPort(hubHost, hubPort, nodeHost, nodePort, self.threads.get())
+    	#Set up streaming setting (S, S, S, S, I, I, I) S=String, I=int
+    	stream.setUpStream(mProxyLabel, mProxyFormat, mProxyType, mAccountLabel, mThreadDelay, mPlayTimeMin, mPlayTimeMax)
+    	#Start bot
+    	stream.startBot()
         
 
 root = Root()
