@@ -26,7 +26,7 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.server.SeleniumServer;
 
-public class CMDTest {
+public class Stream {
 
 	private GridHubConfiguration gridHubConfig;
 
@@ -51,7 +51,7 @@ public class CMDTest {
 
 
 	public static void main(String[] args) {
-		StreamMain rnhObj = new StreamMain();
+		Stream rnhObj = new Stream();
 		rnhObj.ConfigHub();
 		rnhObj.StartHub();
 

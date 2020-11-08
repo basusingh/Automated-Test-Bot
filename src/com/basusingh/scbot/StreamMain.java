@@ -159,7 +159,7 @@ public class StreamMain {
 	}
 	
 	private String getRandomUserAgent() {
-		
+		return "";
 	}
 	
 	
