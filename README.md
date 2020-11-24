@@ -1,5 +1,5 @@
-# SoundCloud Bot
-This bot is based on Selenium and Selenium Grid to perform automated tasks on SoundCloud. 
+# Automated Bot
+This bot is based on Selenium and Selenium Grid to perform automated tasks on various website (sample test given for SoundCloud). 
 
 ## Getting Started
 Make sure to have the correct driver for the browser you prefer to use installed and the location mentioned in the Selenium Grid driver initialization. 
@@ -7,13 +7,13 @@ Make sure to have the correct driver for the browser you prefer to use installed
 There are three ways to start the test.
 1. Using python: if you prefer python as your coding language, you can use [Pyjnius](https://github.com/kivy/pyjnius). Please check main.py file for instructions.
 
-2. Using GUI: there's a sample class FrameMain.java to create a GUI and call StreamMain.java file. You can setup the appropriate fields and call the functions accordingly to initiate tests.
+2. Using GUI: there's a sample class FrameMain.java to create a GUI and call StreamMain.java file. You can setup the appropriate fields and call the functions accordingly to initiate different tests.
 
 3. Directly: to start a test directly, use Stream.java file. 
 
 
 ## Setting up
-All the steps requires three information:
+All the steps requires four set of informations:
 1. Number of threads
 2. Hub host
 3. Hub port (1)
