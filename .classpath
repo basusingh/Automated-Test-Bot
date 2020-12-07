@@ -7,13 +7,13 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/Basu/eclipse-workspace/SC-Bot/src/com/basusingh/selenium/client-combined-3.141.59.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Basu/eclipse-workspace/SC-Bot/src/com/basusingh/selenium/client-combined-3.141.59-sources.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Basu/eclipse-workspace/SC-Bot/src/com/basusingh/selenium/libs/byte-buddy-1.8.15.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Basu/eclipse-workspace/SC-Bot/src/com/basusingh/selenium/libs/commons-exec-1.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Basu/eclipse-workspace/SC-Bot/src/com/basusingh/selenium/libs/guava-25.0-jre.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Basu/eclipse-workspace/SC-Bot/src/com/basusingh/selenium/libs/okhttp-3.11.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Basu/eclipse-workspace/SC-Bot/src/com/basusingh/selenium/libs/okio-1.14.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Basu/eclipse-workspace/SC-Bot/src/com/basusingh/file.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/git/Automated-Test-Bot/src/com/basusingh/file.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/git/Automated-Test-Bot/src/com/basusingh/selenium/client-combined-3.141.59.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/git/Automated-Test-Bot/src/com/basusingh/selenium/client-combined-3.141.59-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/git/Automated-Test-Bot/src/com/basusingh/selenium/libs/byte-buddy-1.8.15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/git/Automated-Test-Bot/src/com/basusingh/selenium/libs/commons-exec-1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/git/Automated-Test-Bot/src/com/basusingh/selenium/libs/guava-25.0-jre.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/git/Automated-Test-Bot/src/com/basusingh/selenium/libs/okhttp-3.11.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/git/Automated-Test-Bot/src/com/basusingh/selenium/libs/okio-1.14.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

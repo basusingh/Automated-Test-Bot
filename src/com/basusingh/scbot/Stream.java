@@ -6,6 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collections;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.grid.common.RegistrationRequest;
@@ -47,10 +48,15 @@ public class Stream {
 	private static Integer[] node_port = {5565, 5567, 5568};
 	private String node_role = "node";
 	WebDriver driver;
+	
+	boolean isRunning = false;
 
 
+	int threadCount = 0;
+	int maxCount = 50;
+	int taskCount = 0;
 
-	public static void main(String[] args) {
+	public static void main1(String[] args) {
 		Stream rnhObj = new Stream();
 		rnhObj.ConfigHub();
 		rnhObj.StartHub();
@@ -81,6 +87,61 @@ public class Stream {
 		//closeNode();
 
 	}
+	
+	void doTask() {
+		isRunning = true;
+		for(int i = 0; i < 3; i++) {
+			System.out.println("Starting node: " + (i+1));
+			ConfigNode(node_port[i]);
+		}
+		
+
+		while(isRunning) {
+			if(threadCount < maxCount) {
+				Thread t = new Thread() {
+					public void run() {
+						try {
+							System.out.println("Starting task: " + (taskCount));
+							taskCount++;
+							Random rand = new Random();
+							InvokeBrowser(node_port[rand.nextInt(4)]);
+							increaseThreadCount();
+						} catch (MalformedURLException e) {
+							System.out.println("Error executing browser task: " + (taskCount));
+							e.printStackTrace();
+						}
+					}
+				};
+				t.start();
+				try {
+					Thread.sleep(10000);
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			} else {
+				System.out.println("Thread full, waiting");
+			}
+		}
+	}
+	
+	private synchronized void increaseThreadCount() {
+		threadCount++;
+	}
+	
+	private synchronized void decreaseThreadCount() {
+		threadCount--;
+	}
+	
+	void stopTask() {
+		isRunning = false;
+		try {
+			Thread.sleep(2000);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("Closing Hub");
+		closeHub();
+	}
 
 	public void InvokeBrowser(int nPort) throws MalformedURLException {
 		System.setProperty("webdriver.chrome.driver", "C:/chromedriver.exe");
@@ -100,7 +161,7 @@ public class Stream {
 		String node_URL = "http://" + node_host + ":" + nPort + "/wd/hub";
 		driver = new RemoteWebDriver(new URL(node_URL), options);
 		System.out.println("Starting task");
-		sampleTest();
+		sampleTest1();
 
 	}
 	
@@ -182,6 +243,25 @@ public class Stream {
 
    }
 	
+	
+	public void sampleTest1() {
+	   	 // Test name: 1
+	       // Step # | name | target | value
+	       // 1 | open | https://soundcloud.com/iamcardib/wap-feat-megan-thee-stallion | 
+	       driver.get("https://google.com");
+	       // 2 | setWindowSize | 1456x876 | 
+	       //driver.manage().window().setSize(new Dimension(1456, 876));
+	       // 3 | mouseOver | css=.loginButton:nth-child(1) | 
+	       driver.manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
+	       try {
+	    	   Thread.sleep(1000);
+	       } catch(Exception e) {
+	    	   e.printStackTrace();
+	       }
+	       driver.quit();
+	       decreaseThreadCount();
+	   }
+		
 
 	public void RegisterNStartNode(RegistrationRequest req1) {
 		remote = new SelfRegisteringRemote(req1);
